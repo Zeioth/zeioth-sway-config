@@ -1,0 +1,156 @@
+
+# SYSTEM
+# ============================================================================
+# Definitions files:
+# ../aliases.d/00-system-aliases
+# ../aliases.d/01-program-aliases
+
+
+# Drag floating windows by holding down $mod and left mouse button.
+# Resize them with right mouse button + $mod.
+# Despite the name, also works for non-floating windows.
+# Change normal to inverse to use left mouse button for resizing and right
+# mouse button for dragging.
+floating_modifier $alt normal
+
+## Launch // Terminal ##
+$bindsym $mod+t exec $term_scratch
+$bindsym $mod+shift+t exec foot-tmux
+
+## Launch // Launcher // wofi  ##
+$bindsym $mod+d exec $launcher
+
+## Action // Kill focused window ##
+$bindsym $mod+Shift+q kill
+
+## Action // Reload Sway Configuration ##
+$bindsym $mod+Shift+c reload
+
+## System keys
+$bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5% && $sink_volume > $wob_socket
+$bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5% && $sink_volume > $wob_socket
+$bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle       && $sink_volume_mute > $wob_socket
+$bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle && $set_sink_microphone_mute > $wob_socket
+$bindsym XF86MonBrightnessUp exec light -A 5 && $onscreen_bar $(light -G | cut -d'.' -f1)
+$bindsym XF86MonBrightnessDown exec light -U 5 && $onscreen_bar $(light -G | cut -d'.' -f1)
+$bindsym XF86AudioPlay exec playerctl play-pause
+$bindsym XF86AudioNext exec playerctl next
+$bindsym XF86AudioPrev exec playerctl previous
+$bindsym XF86Search exec $menu
+$bindsym XF86PowerOff exec $shutdown
+$bindsym XF86TouchpadToggle input type:touchpad events toggle enabled disabled
+
+
+# FOCUS
+# ============================================================================
+
+# Move your focus around
+## Navigation // Move focus // $mod + ↑ ↓ ← → ##
+# $bindsym $mod+Left focus left
+# $bindsym $mod+Down focus down
+# $bindsym $mod+Up focus up
+# $bindsym $mod+Right focus right
+
+
+# WORKSPACES
+# ============================================================================
+
+## Navigation // Switch workspace // $mod + [number] ##
+$bindsym $mod+1 workspace $ws1;exec $map-to-active
+$bindsym $mod+2 workspace $ws2;exec $map-to-active
+$bindsym $mod+3 workspace $ws3;exec $map-to-active
+$bindsym $mod+4 workspace $ws4;exec $map-to-active
+$bindsym $mod+5 workspace $ws5;exec $map-to-active
+$bindsym $mod+6 workspace $ws6;exec $map-to-active
+$bindsym $mod+7 workspace $ws7;exec $map-to-active
+$bindsym $mod+8 workspace $ws8;exec $map-to-active
+
+
+## Action // Move focussed window to workspace // $mod + Shift + [number] ##
+$bindsym $mod+Shift+1 move container to workspace $ws1;workspace $ws1
+$bindsym $mod+Shift+2 move container to workspace $ws2;workspace $ws2
+$bindsym $mod+Shift+3 move container to workspace $ws3;workspace $ws3
+$bindsym $mod+Shift+4 move container to workspace $ws4;workspace $ws4
+$bindsym $mod+Shift+5 move container to workspace $ws5;workspace $ws5
+$bindsym $mod+Shift+6 move container to workspace $ws6;workspace $ws6
+$bindsym $mod+Shift+7 move container to workspace $ws7;workspace $ws7
+$bindsym $mod+Shift+8 move container to workspace $ws8;workspace $ws8
+
+
+
+# LAYOUT
+# ============================================================================
+
+# Setting // Split windows horizontally ##
+$bindsym $mod+b splith
+## Setting // Split windows vertically ##
+$bindsym $mod+v splitv
+
+## Action // Switch to window stacking ##
+$bindsym $mod+s layout stacking
+
+## Action // Switch to window tabbing ##
+$bindsym $mod+w layout tabbed
+
+## Action // Toggle window splitting ##
+$bindsym $mod+e layout toggle split
+
+## Action // Toggle fullscreen ##
+$bindsym $mod+f fullscreen
+
+## Action // Toggle fullscreen across all monitors##
+$bindsym $mod+Shift+f fullscreen global
+
+## Action // Toggle floating ##
+$bindsym $mod+Shift+space floating toggle
+
+## Navigation // Toggle focus between tiling and floating ##
+$bindsym $mod+space focus mode_toggle
+
+## Navigation // Swap focus to the parent window ##
+$bindsym $mod+a focus parent
+
+## Quick lock
+$bindsym $mod+Shift+l exec $locking
+
+# UTILITIES
+# ============================================================================
+# Misc
+$bindsym $alt+Return    exec ~/.config/tmux/new-grid.sh
+$bindsym $mod+Shift+h   exec $help_keyboard
+$bindsym $mod+Shift+v   exec $help_vim
+$bindsym $mod+ctrl+w    exec $weather
+$bindsym $mod+F1        exec $tui_file_browser #  ranger
+$bindsym $mod+F2        exec $gui_file_browser #  thunar
+$bindsym $mod+F6        exec $nvim_editor
+$bindsym $mod+F7        exec $nvim_backlog
+$bindsym $mod+F8        exec $calc
+$bindsym $mod+F10       exec $nvim
+$bindsym $mod+F11       exec $backup_to_cloud
+$bindsym $mod+$ctrl+S   exec $chatgpt
+$bindsym $mod+F4        exec $clipboard_open
+$bindsym $mod+Control+e exec wofi-emoji
+$bindsym $mod+$ctrl+b   exec $update_packages
+$bindsym $mod+ctrl+s    exec $chatgpt
+#$bindsym $mod+F9       exec $lcg
+
+# Swayr (Show running windows and more)
+$bindsym $mod+Tab exec $swayr-wintab
+$bindsym Shift+$mod+x exec $swayr-xkill
+$bindsym $mod+Next exec $swayr-next
+$bindsym $mod+Prior exec $swayr-prev
+
+# MODES
+# ============================================================================
+$bindsym $mod+Shift+a mode $mode_move
+$bindsym $mod+r       mode $mode_resize
+$bindsym $mod+Shift+e mode $mode_shutdown
+$bindsym $mod+Shift+s mode $mode_screenshot
+$bindsym $mod+Shift+d mode $mode_displays
+
+## Launch // Recording Mode ##
+#$bindsym $mod+Shift+r mode $mode_recording
+
+## Launch // Stop Recording Mode ##
+#$bindsym $mod+Escape exec killall -s SIGINT wf-recorder
+

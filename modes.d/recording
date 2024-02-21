@@ -1,0 +1,20 @@
+set $mode_recording "<span foreground='$modes_secondary_color'></span>  \
+<span foreground='$modes_primary_color'><b>Record</b></span> <span foreground='$modes_secondary_color'>(<b>r</b>)</span> \
+<span foreground='$modes_primary_color'>+ [<span foreground='$modes_secondary_color'><b>Shift</b></span> for ]</span>"
+
+set $recorder /usr/share/sway/scripts/recorder.sh
+
+mode --pango_markup $mode_recording {
+        # NOTE: This mode was never actually implemented as we use OBS.
+        #       but it might be a good idea to use it for work and let OBS
+        #       for gaming. 
+        #
+        #       If that's the case, check sway's source code.
+
+
+        $bindsym r exec $recorder, mode "default"
+        $bindsym Shift+r exec $recorder -a, mode "default"
+
+        # Return to default mode.
+        $bindsym Escape mode "default"
+}

@@ -1,0 +1,24 @@
+# User config for sway
+# Read `man ./help.man` for help about the config.
+# Read `man 5 sway`     for a complete reference.
+
+# USER VARIABLES → keep it on the top
+include ./aliases.d/*
+
+# USER HARDWARE
+include ./hardware.d/*
+
+# ENABLE MODES
+include ./modes.d/*
+
+# USER CONFIG
+include ./config.d/*
+
+# AUTOSTART
+include ./autostart.d/*
+
+
+#bindsym --to-code Mod4+d exec wofi -p run
+
+# disable this if every app you use is compatible with wayland
+xwayland enable

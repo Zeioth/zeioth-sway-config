@@ -1,0 +1,108 @@
+# SYSTEM ALIASES
+# ============================================================================
+
+# Dead keys
+set $mod Mod4
+set $alt Mod1
+set $ctrl Control
+
+# Terminal emulator (foot)
+set $term                     ENABLE_VKBASALT=1 footclient -t xterm-256color
+set $term_scratch             ENABLE_VKBASALT=1 footclient -t xterm-256color -a scratchpad
+set $term_scratch_standalone  ENABLE_VKBASALT=1 foot -a scratchpad
+set $tmux                     ENABLE_VKBASALT=1 foot-tmux
+set $foot_server              ENABLE_VKBASALT=1 foot --server
+
+# Displays
+set $screen1 DP-1
+set $screen2 HDMI-A-3
+set $screen3 HDMI-A-1
+set $screen4 DP-3
+set $screen5 DP-4
+set $screen6 DP-5
+
+# Launcher
+set $launcher wofi -p run
+
+# Task manager
+# set $task_manager    pkill -9 fkill; $term_scratch -T "Task Killer - fkill" fzf-kill → On sway we use swayr instead
+
+# Notification daemon configuration
+set $notifications mako
+
+# Widgets - Note: A widget cannot leave its display, but you can create many.
+set $desktop_widgets nwg-wrapper \
+    -o $screen5 \
+    -s anime-op.sh \
+    -r 5000 \
+    -c anime-op.css \
+    -p center \
+    -mr 50 \
+    -a start \
+    -mt 50 \
+    -j right \
+    --layer 1
+
+# Locking
+set $locking swaylock \
+    --daemonize \
+    --color "#000000" \
+    --inside-color "#282a2b" \
+    --inside-clear-color "#eeeeee" \
+    --ring-color "#3B758C" \
+    --ring-clear-color "#9fca56" \
+    --ring-ver-color "#55b5db" \
+    --show-failed-attempts \
+    --ignore-empty-password \
+    --indicator-thickness 50 \
+    --indicator-radius 425
+
+### Idle configuration →  [requires swaylock-effects sway-audio-idle-inhibit]
+set $idle swayidle -w \
+    timeout 240 'light -G > /tmp/brightness && light -S 10' resume 'light -S $([ -f /tmp/brightness ] && cat /tmp/brightness || echo 100%)' \
+    timeout 900 'exec $locking' \
+    timeout 2600000 'swaymsg "output * dpms off"' \
+    resume 'swaymsg "output * dpms on"' \
+    before-sleep 'playerctl pause' \
+    before-sleep 'exec $locking'
+
+# Example: Using widgets in the lock screen (doesn't work on new versions of swaylock)
+# nwg-wrapper -s timezones.sh -r 10000 -c swaylock-time.css -p center -mr 50 -a start -mt 50 -j right --layer 3 &
+# sleep 0.25 && swaylock --image /home/piotr/Obrazy/Wallpapers/wallhaven-kwxjl6-1920x1080.jpg && pkill -f -2 nwg-wrapper
+
+# Volume (speakers)
+set $wob_socket          $XDG_RUNTIME_DIR/wob.sock # Used like $wob_socket <number>
+set $sink_volume         pactl get-sink-volume @DEFAULT_SINK@ | grep '^Volume:' | cut -d / -f 2 | tr -d ' ' | sed 's/%//'
+set $sink_volume_mute    pactl get-sink-mute @DEFAULT_SINK@ | sed -En "/no/ s/.*/$($sink_volume)/p; /yes/ s/.*/0/p"
+
+# Volume (microphone)
+set $source_volume                  pactl get-source-volume @DEFAULT_SOURCE@ | grep '^Volume:' | cut -d / -f 2 | tr -d ' ' | sed 's/%//'
+set $sink_microphone_volume_mute    pactl get-source-mute @DEFAULT_SOURCE@ | sed -En "/no/ s/.*/$($source_volume)/p; /yes/ s/.*/0/p"
+
+# Other system artifacts
+set $systemctl_env       "systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK"
+set $dbus_env            "hash dbus-update-activation-environment 2>/dev/null && dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK"
+set $gnome_polkit        "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
+set $swayd               "env RUST_BACKTRACE=1 swayrd > /tmp/swayrd.log 2>&1"
+set $update_mirrors      "update_mirrors"
+set $idle_inhibit        "sway-audio-idle-inhibit"
+set $flashfocus          "flashfocus"
+set $sunset              "$HOME/.local/bin/sunset.sh 'on'"
+set $foot_server         "foot --server"
+set $swork_style         "pkill sworkstyle; sworkstyle &> /tmp/sworkstyle.log"
+set $wl_paste_polling    "wl-paste --watch cliphist store" # → [cliphist]
+set $spice_vdagent       "spice-vdagent" # → Used by qemu to share clipboard on X systems.
+
+# Support for non-latin layouts in keybindings.
+set $bindsym bindsym --to-code
+set $unbindsym unbindsym --to-code
+
+# workspace name aliases
+set $ws1 number 1
+set $ws2 number 2
+set $ws3 number 3
+set $ws4 number 4
+set $ws5 number 5
+set $ws6 number 6
+set $ws7 number 7
+set $ws8 number 8
