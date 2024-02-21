@@ -9,10 +9,10 @@
 
 # FOR ALL SCREENS (Use rbg subpixel, for antialiased, less sharp image)
 output * adaptive_sync on
-output * max_render_time 12
 output * subpixel none
 output * render_bit_depth 10
 output * scale 1
+output * max_render_time 17 # 60hz has 16.7 frametime. So if a frame is 0.3ms late, skip it to prefer low latency over smoothness.
 
 # EXAMPLE OF USING MODELINE (ufotest displays the right hz but some monitors don't turn on)
 # set $modeline-70hz modeline 839.00 3840 4160 4584 5328 2160 2163 2168 2250 -hsync +vsync
