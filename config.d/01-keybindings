@@ -127,7 +127,6 @@ $bindsym $mod+F7        exec $nvim_backlog
 $bindsym $mod+F8        exec $calc
 $bindsym $mod+F10       exec $nvim
 $bindsym $mod+F11       exec $backup_to_cloud
-$bindsym $mod+$ctrl+S   exec $chatgpt
 $bindsym $mod+F4        exec $clipboard_open
 $bindsym $mod+Control+e exec wofi-emoji
 $bindsym $mod+$ctrl+b   exec $update_packages
