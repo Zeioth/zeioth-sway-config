@@ -1,5 +1,6 @@
 # BARS ALIASES
 # ============================================================================
+# We use these aliases on swaybar by running them with swaymsg exec <alias>.
 # Feel free to move any entry here to ./01-program-aliases
 
 # Waybar programs
