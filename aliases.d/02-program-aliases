@@ -2,7 +2,7 @@
 # ============================================================================
 
 # File edition
-set $tui_file_browser    TERMCMD="foot -a 'scratchpad'" $term_scratch_standalone -T 'Ranger - File Manager' ranger
+set $tui_file_browser    TERMCMD="foot -a 'scratchpad'" $term_scratch_standalone -T 'Yazi - File Manager' yazi
 set $gui_file_browser    thunar
 
 set $nvim_editor         $term -T 'NVIM - editor'  nvim -S ~/.vim_runtime/temp_dirs/sessions/meta-editor.vim

@@ -13,6 +13,11 @@ set $term_scratch_standalone  ENABLE_VKBASALT=1 foot -a scratchpad
 set $tmux                     ENABLE_VKBASALT=1 foot-tmux
 set $foot_server              ENABLE_VKBASALT=1 foot --server
 
+# Terminal emulator (weezterm)
+# set $term                     ENABLE_VKBASALT=1 wezterm --config-file ~/.config/wezterm/config.lua start
+# set $term_scratch             ENABLE_VKBASALT=1 wezterm --config-file ~/.config/wezterm/config.lua start --class scratchpad
+# set $tmux                     ENABLE_VKBASALT=1 wezterm-tmux # TODO
+
 # Displays
 set $screen1 DP-1
 set $screen2 HDMI-A-3
@@ -24,8 +29,8 @@ set $screen6 DP-5
 # Launcher
 set $launcher wofi -p run
 
-# Task manager
-# set $task_manager    pkill -9 fkill; $term_scratch -T "Task Killer - fkill" fzf-kill → On sway we use swayr instead
+# Task manager (or use swayr instead)
+set $task_manager $term_scratch -T "Task Killer - fkill" fzf-kill
 
 # Notification daemon configuration
 set $notifications mako

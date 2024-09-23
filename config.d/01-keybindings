@@ -133,11 +133,16 @@ $bindsym $mod+$ctrl+b   exec $update_packages
 $bindsym $mod+ctrl+s    exec $chatgpt
 #$bindsym $mod+F9       exec $lcg
 
-# Swayr (Show running windows and more)
-$bindsym $mod+Tab exec $swayr-wintab
-$bindsym Shift+$mod+x exec $swayr-xkill
-$bindsym $mod+Next exec $swayr-next
-$bindsym $mod+Prior exec $swayr-prev
+# Swayr
+# $bindsym $mod+Tab exec $swayr-wintab
+# $bindsym Shift+$mod+x exec $swayr-xkill
+# $bindsym $mod+Next exec $swayr-next
+# $bindsym $mod+Prior exec $swayr-prev
+
+# Instead of swayr we now use our own solution
+$bindsym $mod+Tab exec $task_manager
+$bindsym Shift+$mod+x exec $task_manager
+
 
 # MODES
 # ============================================================================
