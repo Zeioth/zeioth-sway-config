@@ -27,12 +27,12 @@ $bindsym $mod+Shift+q kill
 $bindsym $mod+Shift+c reload
 
 ## System keys
-$bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5% && $sink_volume > $wob_socket
-$bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5% && $sink_volume > $wob_socket
-$bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle       && $sink_volume_mute > $wob_socket
-$bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle && $set_sink_microphone_mute > $wob_socket
-$bindsym XF86MonBrightnessUp exec light -A 5 && $onscreen_bar $(light -G | cut -d'.' -f1)
-$bindsym XF86MonBrightnessDown exec light -U 5 && $onscreen_bar $(light -G | cut -d'.' -f1)
+$bindsym XF86AudioRaiseVolume exec volumectl up
+$bindsym XF86AudioLowerVolume exec volumectl down
+$bindsym XF86AudioMute exec volumectl toggle-mute
+$bindsym XF86AudioMicMute exec volumectl -m toggle-mute
+$bindsym XF86MonBrightnessUp exec lightctl up
+$bindsym XF86MonBrightnessDown exec lightctl down
 $bindsym XF86AudioPlay exec playerctl play-pause
 $bindsym XF86AudioNext exec playerctl next
 $bindsym XF86AudioPrev exec playerctl previous

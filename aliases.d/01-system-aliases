@@ -7,16 +7,16 @@ set $alt Mod1
 set $ctrl Control
 
 # Terminal emulator (foot)
-set $term                     ENABLE_VKBASALT=1 footclient -t xterm-256color
-set $term_scratch             ENABLE_VKBASALT=1 footclient -t xterm-256color -a scratchpad
-set $term_scratch_standalone  ENABLE_VKBASALT=1 foot -a scratchpad
-set $tmux                     ENABLE_VKBASALT=1 foot-tmux
-set $foot_server              ENABLE_VKBASALT=1 foot --server
+set $term                     footclient -t xterm-256color
+set $term_scratch             footclient -t xterm-256color -a scratchpad
+set $term_scratch_standalone  foot -a scratchpad
+set $tmux                     foot-tmux
+set $foot_server              foot --server
 
 # Terminal emulator (weezterm)
-# set $term                     ENABLE_VKBASALT=1 wezterm --config-file ~/.config/wezterm/config.lua start
-# set $term_scratch             ENABLE_VKBASALT=1 wezterm --config-file ~/.config/wezterm/config.lua start --class scratchpad
-# set $tmux                     ENABLE_VKBASALT=1 wezterm-tmux # TODO
+# set $term                     wezterm --config-file ~/.config/wezterm/config.lua start
+# set $term_scratch             wezterm --config-file ~/.config/wezterm/config.lua start --class scratchpad
+# set $tmux                     wezterm-tmux # TODO
 
 # Displays
 set $screen1 DP-1
@@ -74,15 +74,6 @@ set $idle swayidle -w \
 # Example: Using widgets in the lock screen (doesn't work on new versions of swaylock)
 # nwg-wrapper -s timezones.sh -r 10000 -c swaylock-time.css -p center -mr 50 -a start -mt 50 -j right --layer 3 &
 # sleep 0.25 && swaylock --image /home/piotr/Obrazy/Wallpapers/wallhaven-kwxjl6-1920x1080.jpg && pkill -f -2 nwg-wrapper
-
-# Volume (speakers)
-set $wob_socket          $XDG_RUNTIME_DIR/wob.sock # Used like $wob_socket <number>
-set $sink_volume         pactl get-sink-volume @DEFAULT_SINK@ | grep '^Volume:' | cut -d / -f 2 | tr -d ' ' | sed 's/%//'
-set $sink_volume_mute    pactl get-sink-mute @DEFAULT_SINK@ | sed -En "/no/ s/.*/$($sink_volume)/p; /yes/ s/.*/0/p"
-
-# Volume (microphone)
-set $source_volume                  pactl get-source-volume @DEFAULT_SOURCE@ | grep '^Volume:' | cut -d / -f 2 | tr -d ' ' | sed 's/%//'
-set $sink_microphone_volume_mute    pactl get-source-mute @DEFAULT_SOURCE@ | sed -En "/no/ s/.*/$($source_volume)/p; /yes/ s/.*/0/p"
 
 # Other system artifacts
 set $systemctl_env       "systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK"
