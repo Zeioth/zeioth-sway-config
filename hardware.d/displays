@@ -12,6 +12,7 @@ output * adaptive_sync on
 output * scale 1
 output * subpixel none
 output * render_bit_depth 10
+output * color_profile icc /home/zeioth/tweaks/misc/color-profiles-for-screens/288E2.icm
 # output * max_render_time 17 # 60hz monitors have a 16.7 frame time. So if a frame is 0.3ms late, skip it to favor low latency over smoothness.
 
 # EXAMPLE OF USING MODELINE (ufotest displays the right hz but some monitors don't turn on)
