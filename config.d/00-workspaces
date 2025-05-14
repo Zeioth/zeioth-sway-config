@@ -135,27 +135,17 @@ focus_on_window_activation urgent
 #assign [title="vim - backlog"] $ws8
 
 ## Semi-Chaotic paradign
+assign [app_id="com.stremio.stremio"] $ws1
 assign [app_id="steam"] $ws1
 assign [app_id="firefox"] $ws2
-assign [app_id="thunderbird"] $ws6
-assign [app_id="spotify"] $ws6
-assign [app_id="franz"] $ws4
-assign [app_id="com.stremio.stremio"] $ws1
+assign [app_id="thunderbird"] $ws3
+assign [app_id="spotify"] $ws3
+assign [app_id="franz"] $ws3
+assign [title="^Proton Mail"] $ws3
+assign [title="^Proton Calendar"] $ws3
+assign [title="^Google Tasks"] $ws4
+assign [title="^Trello"] $ws4
 assign [app_id="com.obsproject.Studio"] $ws4
-
-# ASSIGN WORKSPACES TO SCREENS
-workspace 1 output $screen4
-workspace 2 output $screen5
-workspace 3 output $screen6
-workspace 4 output $screen1
-workspace 5 output $screen2
-workspace 6 output $screen3
-
-# Extra workspaces
-workspace 7 output $screen5
-workspace 8 output $screen5
-
-
 
 # X - Scratchpad
 for_window [app_id="^scratchpad"] border pixel 1, sticky enable, resize set width 50 ppt height 75 ppt, move scratchpad, scratchpad show

@@ -25,27 +25,19 @@ output * color_profile icc /home/zeioth/tweaks/misc/color-profiles-for-screens/2
 # output $screen6 pos 7680 2160 $modeline-70hz
 
 
-output $screen1 mode 3840x2160@70.981Hz pos 0 0 enable
-output $screen2 mode 3840x2160@70.981Hz pos 3840 0 enable
-output $screen3 mode 3840x2160@70.981Hz pos 7680 0 enable
-output $screen4 mode 3840x2160@70.981Hz pos 0 2160 enable
-output $screen5 mode 3840x2160@70.981Hz pos 3840 2160 enable
-output $screen6 mode 3840x2160@70.981Hz pos 7680 2160 enable
+output $screen1 mode 3840x2160@59.997Hz pos 0 2160 enable
+output $screen2 mode 3840x2160@59.997Hz pos 3840 2160 enable
+output $screen3 mode 3840x2160@59.997Hz pos 0 0 enable
+output $screen4 mode 3840x2160@59.997Hz pos 3840 0 enable
 # EXAMPLE: output * transform 180 → in case you wanna rotate
 
-workspace 1 output $screen4
-workspace 2 output $screen5
-workspace 3 output $screen6
-workspace 4 output $screen1
-workspace 5 output $screen2
-workspace 6 output $screen3
+workspace 1 output $screen1
+workspace 2 output $screen2
+workspace 3 output $screen3
+workspace 4 output $screen4
 
 # Default wallpaper
 output $screen1 bg $background1 fill
 output $screen2 bg $background2 fill
 output $screen3 bg $background3 fill
 output $screen4 bg $background4 fill
-output $screen5 bg $background5 fill
-output $screen6 bg $background6 fill
-
-

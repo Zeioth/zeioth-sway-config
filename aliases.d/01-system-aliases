@@ -19,12 +19,10 @@ set $foot_server              foot --server
 # set $tmux                     wezterm-tmux # TODO
 
 # Displays
-set $screen1 DP-1
-set $screen2 HDMI-A-3
-set $screen3 HDMI-A-1
-set $screen4 DP-3
-set $screen5 DP-4
-set $screen6 DP-5
+set $screen1 DP-3
+set $screen2 DP-2
+set $screen3 DP-1
+set $screen4 HDMI-A-1
 
 # Launcher
 set $launcher wofi -p run
@@ -37,7 +35,7 @@ set $notifications mako
 
 # Widgets - Note: A widget cannot leave its display, but you can create many.
 set $desktop_widgets nwg-wrapper \
-    -o $screen5 \
+    -o $screen2 \
     -s anime-op.sh \
     -r 5000 \
     -c anime-op.css \

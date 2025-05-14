@@ -1,5 +1,5 @@
 set $mode_screenshot "\
-<span foreground='$modes_secondary_color'></span>  \
+<span foreground='$modes_secondary_color'>󰄀</span>  \
 <span foreground='$modes_primary_color'> \
 <span foreground='$modes_secondary_color'>(<b>s</b>)</span>screen-up \
 <span foreground='$modes_secondary_color'>(<b>r</b>)</span>region-up \
